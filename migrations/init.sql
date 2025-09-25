@@ -1,1 +1,12 @@
-#insert
+INSERT INTO tasks (name, status) VALUES ('Task 1', 'TODO',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 2', 'PENDING',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 3', 'DONE',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 4', 'TODO',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 5', 'PENDING',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 6', 'DONE',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 7', 'TODO',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 8', 'PENDING',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 9', 'DONE',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 10', 'TODO',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 11', 'PENDING',"LOW");
+INSERT INTO tasks (name, status) VALUES ('Task 12', 'DONE',"LOW");

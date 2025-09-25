@@ -21,4 +21,3 @@ def connection_to_db():
         print(f"{err}")
         return None
 
-connection_to_db()
