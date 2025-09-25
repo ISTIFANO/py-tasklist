@@ -11,7 +11,7 @@ def connection_to_db():
     database = os.getenv("DB_NAME")
 
     connection_str = f"postgresql://{user}:{password}@{host}:{port}/{database}"
-
+    print(connection_str)
     try:
         engine = create_engine(connection_str)
         with engine.connect() as conn:
