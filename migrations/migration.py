@@ -19,7 +19,7 @@ tasks_table = Table(
     Column("status", status,default="TODO"),
     Column("priorite", priorite,default="LOW")
 )
-# metadata.create_all(engine)
+metadata.create_all(engine)
 
 stmt = insert(tasks_table).values(
     contenu="migration done ",
