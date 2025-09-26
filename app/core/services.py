@@ -1,6 +1,6 @@
 import sys
 import os
-from sqlalchemy import select,delete,update
+from sqlalchemy import select,delete,update,insert
 custom_path = r'C:\Users\aamir\Desktop\YC\Python\py-tasklist\app\core'
 if custom_path not in sys.path:
     sys.path.append(custom_path)
@@ -14,11 +14,16 @@ def execution(stmt):
     with db.begin() as conn: 
         result = conn.execute(stmt).mappings().all()  
     return result  
+def executionCrud(stmt):
+    with db.begin() as conn: 
+        result = conn.execute(stmt)
+    return result  
+
 
 def fetchAll():
     resultat = execution(select(tasks_table))
     return resultat
-
+var = fetchAll()
 def fetchInProgressTasks():
      resultat = execution(select(tasks_table).where(tasks_table.columns.status=="PENDING"))
      return resultat
@@ -28,23 +33,46 @@ def fetchDoneTasks():
 def fetchTodoTasks():
      resultat = execution(select(tasks_table).where(tasks_table.columns.status=="TODO"))
      return resultat
+
 def Delete(id):
-    resultat = execution(delete(tasks_table).where(tasks_table.c.id == id))
+    resultat = executionCrud(delete(tasks_table).where(tasks_table.c.id == id))
     print("data deleted succ")
     return resultat
-def insert(contenu , priorite="LOW",status="TODO"):
-        resultat = execution(insert(tasks_table).values(contenu=contenu,priorite=priorite,status=status ))
-        print("data created succ")
-        return resultat
-def findbyId(id):
-     resultat = select(tasks_table).where(tasks_table.c.id == id)
-     return resultat
-def updateValues(id, contenu, priorite, status):
+def add_task(contenu, priorite="LOW", status="TODO"):
+    stmt = insert(tasks_table).values(
+        contenu=contenu,
+        priorite=priorite,
+        status=status
+    )
+    resultat = execution(stmt)
+    print("data created successfully")
+    return resultat
+
+def find_by_id(id):
+    stmt = select(tasks_table).where(tasks_table.c.id == id)
+    result = execution(stmt)
+    if result:               
+        return result[0]      
+    return None
+
+
+def updatepriorite(id,priorite):
     stmt = (
         update(tasks_table)
         .where(tasks_table.c.id == id)
-        .values(contenu=contenu, priorite=priorite, status=status)
+        .values( priorite=priorite)
     )
-    resultat = execution(stmt)
+    resultat = executionCrud(stmt)
     print("Data updated succ")
     return resultat
+
+def updatestatus(id,status):
+    stmt = (
+        update(tasks_table)
+        .where(tasks_table.c.id == id)
+        .values( status=status)
+    )
+    resultat = executionCrud(stmt)
+    print("Data updated succ")
+    return resultat
+
