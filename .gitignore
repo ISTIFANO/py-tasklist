@@ -1,2 +1,8 @@
 .env
 .venv
+migrations/__pycache__
+app/gui/__pycache__
+app/infra/__pycache__
+app/infra/Enums/__pycache__
+app/core/__pycache__
+app/__pycache__
