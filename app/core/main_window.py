@@ -15,8 +15,7 @@ statuses = ["TODO", "PENDING", "DONE"]
 properties = ["HIGH", "LOW", "MEDIUM"]
 frames = {}
 
-scrol = Scrollbar(root)
-scrol.pack(side=RIGHT,fill=Y)
+
 
 header = tk.Label(
     root,
